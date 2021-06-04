@@ -8,6 +8,6 @@ try:
     else:
         print(f'{nu} É um número Ímpar')
 except:
-    print('Algo deu errado tente colocar um número inteiro')
+    print('Algo deu errado, tente colocar um número inteiro')
 
 
