@@ -18,7 +18,7 @@ elif op == "*":
     r3 = n1 * n2
     print("O resultado é: ", r3)
 elif op == "/":
-    r4 = n1 // n2
+    r4 = n1 / n2
     print("O resultado é: ", r4)
 else:
     print("Verifique o tipo de operação")
