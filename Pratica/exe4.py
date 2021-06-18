@@ -5,7 +5,8 @@ while n2 > 1 and n1 < 9:
     n1 += 1
     n2 -= 1
 
-"""for p, r in enumerate(range(10, 1, -1)):
+"""
+for p, r in enumerate(range(10, 1, -1)):
     print(p, r)
 """
 
