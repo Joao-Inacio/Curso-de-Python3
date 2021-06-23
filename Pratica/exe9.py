@@ -1,7 +1,8 @@
-'''n1 = int(input('Número 1: '))
+""" n1 = int(input('Número 1: '))
 n2 = int(input('Número 2: '))
 s = (n1 * n2) / 100
-print(s)'''
+print(s)
+"""
 
 
 def funcao(n1, n2):
