@@ -12,3 +12,16 @@ def func2():
 
 
 func1()
+
+# Resolunção
+
+def ola_mundo():
+    return 'olá mundo!'
+
+
+def mestre(funcao):
+    return funcao()
+
+
+exec = mestre(ola_mundo)
+print(exec)
