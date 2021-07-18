@@ -17,3 +17,14 @@ nova_lista2 = filter(filtra, produtos)
 
 for produto in nova_lista2:
     print(produto)
+print()
+
+def filtra_p(pessoa):
+    if pessoa['idade'] >= 45:
+        return True
+
+
+nova_lista3 = filter(filtra_p, pessoas)
+
+for pessoa in nova_lista3:
+    print(pessoa)
