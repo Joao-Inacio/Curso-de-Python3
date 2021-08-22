@@ -31,6 +31,12 @@ class Conta(ABC):
             raise ValueError('Valor do depósito precisa ser numérico')
 
         self.saldo += valor
+        self.detalhes()
+
+    def detalhes(self):
+        print(f'Agência: {self.agencia}', end=' ')
+        print(f'Conta: {self.conta}', end=' ')
+        print(f'Saldo: {self.saldo}')
 
     @abstractmethod
     def sacar(self, valor):
