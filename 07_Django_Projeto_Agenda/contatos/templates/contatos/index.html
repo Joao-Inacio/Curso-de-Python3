@@ -28,7 +28,7 @@
 
           </tbody>
         </table>
-        <nav aria-label="Page navigation example">
+        <!--<nav aria-label="Page navigation example">
           <ul class="pagination">
               {% for pagina in contatos.paginator.page_range %}
                 {% if contatos.number == pagina %}
@@ -42,6 +42,42 @@
                 {% endif %}
               {% endfor %}
           </ul>
+        </nav>-->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                {% if contatos.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="{% url 'index' %}?p={{ contatos.previous_page_number }}">Anterior</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">Anterior</a>
+                    </li>
+                {% endif %}
+
+                {% for pagina in contatos.paginator.page_range %}
+                    {% if pagina == contatos.number %}
+                        <li class="page-item active">
+                            <a class="page-link" href="#">{{ pagina }}</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a class="page-link" href="{% url 'index' %}?p={{ pagina }}">{{ pagina }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if contatos.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="{% url 'index' %}?p={{ contatos.next_page_number }}">Próximo</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">Próximo</a>
+                    </li>
+                {% endif %}
+
+            </ul>
         </nav>
 
 {%endblock%}
