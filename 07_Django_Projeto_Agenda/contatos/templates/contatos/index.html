@@ -47,7 +47,7 @@
             <ul class="pagination">
                 {% if contatos.has_previous %}
                     <li class="page-item">
-                        <a class="page-link" href="{% url 'index' %}?p={{ contatos.previous_page_number }}">Anterior</a>
+                        <a class="page-link" href="?p={{ contatos.previous_page_number }}&termo={{ request.GET.termo }}">Anterior</a>
                     </li>
                 {% else %}
                     <li class="page-item disabled">
@@ -58,18 +58,18 @@
                 {% for pagina in contatos.paginator.page_range %}
                     {% if pagina == contatos.number %}
                         <li class="page-item active">
-                            <a class="page-link" href="#">{{ pagina }}</a>
+                            <a class="page-link" href="?p={{ pagina }}&termo={{ request.GET.termo }}">{{ pagina }}</a>
                         </li>
                     {% else %}
                         <li class="page-item">
-                            <a class="page-link" href="{% url 'index' %}?p={{ pagina }}">{{ pagina }}</a>
+                            <a class="page-link" href="?p={{ pagina }}&termo={{ request.GET.termo }}">{{ pagina }}</a>
                         </li>
                     {% endif %}
                 {% endfor %}
 
                 {% if contatos.has_next %}
                     <li class="page-item">
-                        <a class="page-link" href="{% url 'index' %}?p={{ contatos.next_page_number }}">Próximo</a>
+                        <a class="page-link" href="?p={{ contatos.next_page_number }}&termo={{ request.GET.termo }}">Próximo</a>
                     </li>
                 {% else %}
                     <li class="page-item disabled">
