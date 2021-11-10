@@ -61,11 +61,18 @@ def busca(request):
         Q(nome_completo__icontains=termo) | Q(telefone__icontains=termo)
     )
     if contatos:
-        messages.add_message(
-            request,
-            messages.SUCCESS,
-            'Success'
-        )
+        if len(contatos) == 1:
+            messages.add_message(
+                request,
+                messages.SUCCESS,
+                f'foram encotrado {len(contatos)} contato'
+            )
+        else:
+            messages.add_message(
+                request,
+                messages.SUCCESS,
+                f'foram encotrados {len(contatos)} contatos'
+            )
     else:
         messages.add_message(
             request,
