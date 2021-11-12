@@ -46,7 +46,7 @@ def busca(request):
         messages.add_message(
             request,
             messages.ERROR,
-            'Campo de busca não pode ser vazio'
+            'Campo de busca não pode está vazio'
         )
         return redirect('index')
     campos = Concat('nome', Value(' '), 'sobrenome')
@@ -65,7 +65,7 @@ def busca(request):
             messages.add_message(
                 request,
                 messages.SUCCESS,
-                f'foram encotrado {len(contatos)} contato'
+                f'foi encotrado {len(contatos)} contato'
             )
         else:
             messages.add_message(
