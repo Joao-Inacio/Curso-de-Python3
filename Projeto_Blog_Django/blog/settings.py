@@ -138,6 +138,7 @@ MESSAGE_TAGS = {
         constants.SUCCESS: 'alert-success',
         constants.INFO: 'alert-info',
 }
+INSTALLED_APPS += ('django_summernote', )
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

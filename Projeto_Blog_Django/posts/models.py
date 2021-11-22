@@ -5,7 +5,7 @@ from django.utils import timezone
 
 
 class Post(models.Model):
-    titulo_post = models.CharField(max_length=2550)
+    titulo_post = models.CharField(max_length=2550, verbose_name='Título')
     autor_post = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     data_post = models.DateTimeField(default=timezone.now)
     conteudo_post = models.TextField()
@@ -14,4 +14,5 @@ class Post(models.Model):
     imagem_post = models.ImageField(upload_to='post_img/%Y/%m/%d', blank=True, null=True)
     publicado_post = models.BooleanField(default=False)
 
-# Create your models here.
+    def __str__(self):
+        return self.titulo_post
