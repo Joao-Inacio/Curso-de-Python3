@@ -43,8 +43,9 @@ class PostBusca(PostIndex):
             Q(autor_post__first_name__iexact=termo) |
             Q(conteudo_post__icontains=termo) |
             Q(excerto_post__icontains=termo) |
-            Q(categoria_post__name_cat__iexact=termo)
+            Q(categoria_post__nome_cat__iexact=termo)
         )
+        return qs
 
 
 class PostCategoria(PostIndex):
@@ -74,7 +75,6 @@ class PostDetalhes(UpdateView):
         comentario = Comentario.objects.filter(publicado_comentario=True,
                                                post_comentario=post.id)
         contexto['comentarios'] = comentario
-
 
         return contexto
 
