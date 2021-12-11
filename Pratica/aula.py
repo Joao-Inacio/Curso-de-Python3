@@ -1,5 +1,6 @@
 """print("Hello word!")
 print('Olá Mundo!')"""
+
 n1 = int(input("Primeiro Número: "))
 n2 = int(input("Segundo Número: "))
 op = input("Qual operação você quer fazer:\n"
@@ -22,6 +23,3 @@ elif op == "/":
     print("O resultado é: ", r4)
 else:
     print("Verifique o tipo de operação")
-
-
-
