@@ -4,11 +4,11 @@ print('Olá Mundo!')"""
 n1 = int(input("Primeiro Número: "))
 n2 = int(input("Segundo Número: "))
 op = input("Qual operação você quer fazer:\n"
-           "[+] = Soma\n"
-           "[-] = Subtração\n"
-           "[*] = Multiplicação\n"
-           "[/] = Divisão\n"
-           ": ")
+            "[+] = Soma\n"
+            "[-] = Subtração\n"
+            "[*] = Multiplicação\n"
+            "[/] = Divisão\n"
+            ": ")
 if op == "+":
     r1 = n1 + n2
     print("O resultado é: ", r1)
