@@ -8,7 +8,7 @@ class Pagar(View):
     pass
 
 
-class FecharPedido(View):
+class SalvaPedido(View):
     pass
 
 
