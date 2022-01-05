@@ -5,12 +5,24 @@
 <div class="row"> <!-- div.row>div.col*2 -->
     {% if not request.user.is_authenticated %}
         <div class="col-lg">
-            <h1>Login</h1>
+            <h3>Login</h3>
+            <form method="POST"  action="{% url 'perfil:login' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="InputUsuario1">Usuário</label>
+                    <input type="text" name="username" class="form-control" id="InputUsuario1" aria-describedby="usuariolHelp" placeholder="Enter Usuário">
+                </div>
+                <div class="form-group">
+                    <label for="InputSenha1">Senha</label>
+                    <input type="password" name="password" class="form-control" id="InputSenha1" placeholder="Sua senha">
+                </div>
+                <button type="submit" class="btn btn-block btn-lg btn-dark">Logar</button>
+            </form>
         </div>
     {% endif %}
     <div class="col-lg">
         {% block titulocadastro %}
-            <h1>Cadastro</h1>
+            <h3>Cadastro</h3>
         {% endblock %}
 
         <form method="POST"  action="">
