@@ -4,6 +4,8 @@ from django.views import View
 from django.http import HttpResponse
 from django.contrib import messages
 from produto.models import Variacao
+from utils import utils
+from .models import Pedido, ItemPedido
 
 
 class Pagar(View):
@@ -53,9 +55,34 @@ class Pagar(View):
                     )
                     self.request.session.save()
                     return redirect('produto:carrinho')
+        qtd_total_carrinho = utils.qtd_total_carr(carrinho)
+        valor_total_carrinho = utils.cart_totals(carrinho)
 
-        contexto = {}
-        return render(self.request, self.template_name, contexto)
+        pedido = Pedido(
+            usuario=self.request.user,
+            total=valor_total_carrinho,
+            qtd_total=qtd_total_carrinho,
+            status='C',
+        )
+        pedido.save()
+        ItemPedido.objects.bulk_create(
+            [
+                ItemPedido(
+                    pedido=pedido,
+                    produto=v['produto_nome'],
+                    produto_id=v['produto_id'],
+                    variacao=v['variacao_nome'],
+                    variacao_id=v['variacao_id'],
+                    preco=v['preco_quantitativo'],
+                    preco_promocional=v['preco_quantitativo_promocional'],
+                    quantidade=v['quantidade'],
+                    imagem=v['imagem'],
+                ) for v in carrinho.values()
+            ]
+        )
+
+        del self.request.session['carrinho']
+        return redirect('pedido:lista')
 
 
 class SalvaPedido(View):
@@ -64,3 +91,8 @@ class SalvaPedido(View):
 
 class Detalhe(View):
     pass
+
+
+class Lista(View):
+    def get(self, request, *args, **kwargs):
+        return HttpResponse('Lista')
