@@ -9,24 +9,23 @@ from utils import utils
 from .models import Pedido, ItemPedido
 
 
-class DispatchLoginRequired(View):
+class DispatchLoginRequiredMixin(View):
     def dispatch(self, *args, **kwargs):
         if not self.request.user.is_authenticated:
             return redirect('perfil:criar')
         return super().dispatch(*args, **kwargs)
-        
-
-
-class Pagar(DispatchLoginRequired, DetailView):
-    template_name = 'pedido/pagar.html'
-    model = Pedido
-    pk_url_kwargs = 'pk'
-    context_object_name = 'pedido'
 
     def get_queryset(self, *args, **kwargs):
         qs = super().get_queryset(*args, **kwargs)
         qs = qs.filter(usuario=self.request.user)
         return qs
+
+
+class Pagar(DispatchLoginRequiredMixin, DetailView):
+    template_name = 'pedido/pagar.html'
+    model = Pedido
+    pk_url_kwargs = 'pk'
+    context_object_name = 'pedido'
 
 
 class SalvaPedido(View):
@@ -113,10 +112,16 @@ class SalvaPedido(View):
         )
 
 
-class Detalhe(View):
-    pass
+class Detalhe(DispatchLoginRequiredMixin, DetailView):
+    model = Pedido
+    context_object_name = 'pedido'
+    template_name = 'pedido/detalhe.html'
+    pk_url_kwargs = 'pk'
 
 
-class Lista(View):
-    def get(self, request, *args, **kwargs):
-        return HttpResponse('Lista')
+class Lista(DispatchLoginRequiredMixin, ListView):
+    model = Pedido
+    context_object_name = 'pedidos'
+    template_name = 'pedido/lista.html'
+    paginate_by = 5
+    ordering = ['-id']
