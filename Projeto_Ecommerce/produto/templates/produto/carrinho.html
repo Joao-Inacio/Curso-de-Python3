@@ -2,6 +2,8 @@
 {% load omfilters %}
 {% load static %}
 
+{% block titulo %}Carrinho | {% endblock %}
+
 {% block conteudo %}
     {% if request.session.carrinho %}
         <div class="row mt-3">
