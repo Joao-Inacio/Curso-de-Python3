@@ -1,5 +1,5 @@
 import unittest
-from calculadora import soma
+from calculadora import soma, subtrai
 
 
 class TestCalculadora(unittest.TestCase):
@@ -22,7 +22,10 @@ class TestCalculadora(unittest.TestCase):
             with self.subTest(x_y_saida=x_y_saida):
                 x, y, saida = x_y_saida
                 self.assertEqual(soma(x, y), saida)
-    
+
+    def test_subtrair_10_e_20_deve_retornar_10(self):
+        self.assertEqual(subtrai(10, 20), -10)
+
     def test_soma_x_nao_e_int_ou_float_deve_retornar_assertionerror(self):
         with self.assertRaises(AssertionError):
             soma('11', 0)
