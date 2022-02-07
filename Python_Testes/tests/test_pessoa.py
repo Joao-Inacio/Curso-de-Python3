@@ -1,3 +1,21 @@
+"""
+# Para caso o caminho do arquivo não der certo
+try:
+    import sys 
+    import os
+    
+    sys.path.append(
+        os.path.abspath(
+            os.path.join(
+                os.path.dirname(__file__),
+                '../src'
+            )
+        )
+    )
+except:
+    raise
+"""
+
 import unittest
 from unittest.mock import patch
 from Pessoa import Pessoa
