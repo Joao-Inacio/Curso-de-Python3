@@ -7,4 +7,4 @@ for i in range(1, n + 1):
 
 print(f'{l[0]:.1f}')
 print(f'{l[1]:.1f}')
-print(f'{l[2]:.1f}')
+print(f'{l[2]:.1f}\n')
