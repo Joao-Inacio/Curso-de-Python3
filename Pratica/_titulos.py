@@ -1,3 +1,3 @@
 
 titulo = str(input('Titulo da aula: '))
-print(titulo.replace(' ', '_'))
+print(titulo.replace(' ', ''))
