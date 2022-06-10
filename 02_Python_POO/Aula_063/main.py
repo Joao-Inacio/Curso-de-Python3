@@ -3,6 +3,7 @@
 """
 from random import randint
 
+
 class Pessoa:
     ano_atual = 2021
 
