@@ -6,7 +6,7 @@
 
 
 class BaseDeDados:
-    def __init__(self):
+    def __init__(self):  # Construtor
         self.__dados = {}
 
     def inserir_clientes(self, id, nome):
@@ -29,4 +29,3 @@ bd.inserir_clientes(2, 'Miranda')
 bd.inserir_clientes(3, 'Rose')
 bd.apaga_clientes(2)
 bd.lista_clientes()
-
